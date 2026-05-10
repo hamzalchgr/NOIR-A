@@ -48,4 +48,8 @@
   .nav-link:hover::after {
     @apply w-full;
   }
+
+  .heading-2 {
+    @apply text-3xl md:text-5xl font-medium;
+  }
 }
