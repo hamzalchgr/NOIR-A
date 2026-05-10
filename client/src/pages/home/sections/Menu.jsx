@@ -1,6 +1,47 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DisheDisplay from "../components/DisheDisplay";
+
+// 📌 Get all menu
+// GET /api/menu
+// 📌 Get category
+// GET /api/menu/drinks
+// GET /api/menu/pastas
+// 📌 Get single dish
+// GET /api/menu/dish/Golden Espresso Martini
 
 const Menu = () => {
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [menu, setMenu] = useState([]);
+
+  const getMenu = async (signal) => {
+    try {
+      setLoading(true);
+      setErrorMsg(null);
+
+      const res = await fetch("http://localhost:5000/api/menu", { signal });
+
+      if (!res.ok) {
+        throw new Error("Failed to get menu");
+      }
+
+      const result = await res.json();
+      setMenu(result);
+    } catch (error) {
+      if (error.name !== "AbortError") setErrorMsg(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const controller = new AbortController();
+    getMenu(controller.signal);
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <section className="">
       <div className="h-screen max-w-screen flex flex-col items-center justify-center gap-25 px-4">
@@ -25,22 +66,11 @@ const Menu = () => {
       </div>
 
       <ul className="flex flex-col gap-4 pb-20">
-        <li>
-          <div className="relative flex items-center justify-center">
-            <h2 className="absolute text-4xl md:text-6xl lg:text-[160px] font-medium leading-none p-6">
-              Pasta
-            </h2>
-
-            <div className="hidden lg:block h-[325px] w-[325px] overflow-hidden">
-              <img
-                className="h-full w-full object-center object-cover"
-                src="https://framerusercontent.com/images/lXhOHGPNKfiNNvzCzK7HWqJYQc.jpeg?scale-down-to=1024"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </li>
+        {menu.map((category) => (
+          <li key={category.id}>
+            <DisheDisplay category={category} />
+          </li>
+        ))}
       </ul>
     </section>
   );
