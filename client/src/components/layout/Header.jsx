@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import NAV_LINKS from "../../constants/index";
 
 import { useState } from "react";
-import clsx from"clsx";
+import clsx from "clsx";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="relative flex gap-9 items-center px-8 py-6 justify-between md:justify-center">
+      <nav className="relative flex gap-9 items-center px-8 py-6 justify-between md:justify-center text-white">
         <ul className="hidden md:flex gap-9">
           <li className="nav-link">
             <Link to="/about">about</Link>
@@ -48,17 +48,22 @@ const Header = () => {
 
         <div
           id="mobile-nav"
-          className={clsx("block md:hidden absolute w-full overflow-hidden mt-22 z-50 left-0 top-0 transition-all duration-300", menuOpen? "h-[calc(100vh-88px)]" : "h-0")}
+          className={clsx(
+            "block md:hidden absolute w-full overflow-hidden mt-22 z-50 left-0 top-0 transition-all duration-300",
+            menuOpen ? "h-[calc(100vh-88px)]" : "h-0",
+          )}
           aria-label="navlist wrapper"
           aria-hidden={!menuOpen}
         >
           <ul className="flex flex-col gap-1 px-8 bg-dark">
             {NAV_LINKS.map(({ path, label }) => (
               <li
-                key={label}
+                key={path}
                 className="capitalize font-medium  text-3xl leading-relaxed"
               >
-                <Link to={path}>{label}</Link>
+                <Link to={path} onClick={() => setMenuOpen(false)}>
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
