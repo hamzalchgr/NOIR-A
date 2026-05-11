@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DisheDisplay = ({ category }) => {
   const [index, setIndex] = useState(0);
@@ -18,7 +19,7 @@ const DisheDisplay = ({ category }) => {
     return () => clearTimeout(timer);
   }, [index, menu.length]);
   return (
-    <div className="relative h-fit flex items-center justify-center group">
+    <Link to="/menu" className="relative h-fit flex items-center justify-center group">
       <h2 className="lg:absolute text-4xl md:text-6xl lg:text-[160px] font-medium leading-none p-6">
         {category.category}
       </h2>
@@ -31,7 +32,7 @@ const DisheDisplay = ({ category }) => {
           loading="lazy"
         />
       </div>
-    </div>
+    </Link>
   );
 };
 
