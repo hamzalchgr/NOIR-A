@@ -1,3 +1,4 @@
+import Booking from './sections/Booking'
 import Hero from './sections/Hero'
 import Menu from './sections/Menu'
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <Hero />
       <Menu />
+      <Booking />
     </div>
   )
 }

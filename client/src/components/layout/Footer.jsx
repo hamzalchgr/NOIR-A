@@ -4,7 +4,7 @@ import NAV_LINKS from "../../constants";
 const Footer = () => {
   return (
     <footer>
-      <div className="flex flex-col items-center gap-10">
+      <div className="flex flex-col items-center gap-10 py-30">
         <div className="flex flex-col items-center">
           <div className="tracking-widest text-lg leading-8.5 text-white">
             <Link to="/">NOIRÉA</Link>
