@@ -38,9 +38,9 @@ const Booking = () => {
         </label>
         </div>
 
-        <button type="submit" className="bg-white rounded-full h-12 text-dark font-medium w-full">MAKE RESERVATION</button>
+        <button type="submit" className="bg-white rounded-full h-12 text-dark font-medium w-full cursor-pointer">MAKE RESERVATION</button>
 
-        <p>I accept the <Link to="">terms and conditions</Link></p>
+        <p>I accept the <Link className="nav-link p-0 lowercase text-sm" to="">terms and conditions</Link></p>
       </form>
     </section>
   )
