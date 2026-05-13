@@ -36,11 +36,11 @@ const Hero = () => {
     });
 
     gsap.from(imgsRef.current, {
-  clipPath: "inset(0 100% 0 0)",
-  duration: 6,
-  stagger: .03,
-  ease: "power3.out"
-});
+      clipPath: "inset(0 50% 0 0)",
+      duration: 6,
+      stagger: 0.03,
+      ease: "power3.out",
+    });
 
     return () => split.revert();
   }, []);

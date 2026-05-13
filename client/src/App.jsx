@@ -6,6 +6,7 @@ import Menu from "./pages/menu/Menu";
 import NotFound from "./pages/NotFound";
 import Booking from "./pages/booking/Booking";
 import News from "./pages/news/News";
+import About from "./pages/about/About";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/news" element={<News />} />
+        <Route path="/about" element={<About />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
