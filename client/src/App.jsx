@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import NotFound from "./pages/NotFound";
 import Booking from "./pages/booking/Booking";
+import News from "./pages/news/News";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/news" element={<News />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
